@@ -1,1 +1,1 @@
-ES6 Javascript
+ES6 basics Javascript
