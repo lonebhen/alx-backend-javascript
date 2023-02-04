@@ -38,3 +38,5 @@ class Teacher implements TeacherInterface{
         return "Getting to work"
     }
 }
+
+export const createEmployee = (salary:number | string): Director|Teacher=> Number(salary) < 500? new Director: new Teacher;
