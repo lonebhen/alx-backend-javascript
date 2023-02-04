@@ -40,3 +40,26 @@ class Teacher implements TeacherInterface{
 }
 
 export const createEmployee = (salary:number | string): Director|Teacher=> Number(salary) < 500? new Director: new Teacher;
+
+
+export function isDirector(employee: TeacherInterface | DirectorInterface): employee is Director {
+    return (employee as Director).workDirectorTasks !== undefined;
+  }
+  
+  export function executeWork(employee: DirectorInterface | TeacherInterface): string {
+    let res = undefined;
+    (isDirector(employee)) ? res = employee.workDirectorTasks() : res = employee.workTeacherTasks();
+    return res;
+  }
+  type Subjects = "Math" | "History";
+  
+  export function teachClass(todayClass: Subjects): string {
+    if (todayClass === "Math") {
+      return "Teaching Math";
+    } else if (todayClass === "History") {
+      return "Teaching History";
+    }
+  }
+  
+  console.log(teachClass("Math"));
+  console.log(teachClass("History"));
